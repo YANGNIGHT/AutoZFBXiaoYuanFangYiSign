@@ -60,7 +60,13 @@ Python版本 江西省普通高等学校 校园防疫 健康签到 自动签到�
 
 6. 修改第23 行 是否为毕业班级（0表示是毕业班的学生 1表示不是毕业班的学生）
 
-7. 修改第30 行 签到模式 （0表示获取前一日的签到定位，1表示使用输入的经纬度）
+7. 在百度地图开放平台申请并创建一个服务端类型的应用AK,并把AK复制下来，填入签到主程序sign.py第239行：
+
+   url = 'http://api.map.baidu.com/reverse_geocoding/v3/?ak=把AK填入这个部分&output=json&coordtype'
+
+   注意不要多删除字符，AK一定申请服务端类型的。
+
+8. 修改第30 行 签到模式 （0表示获取前一日的签到定位，1表示使用输入的经纬度）
 
    > 因为为了使签到位置产生一点点差异，每次签到都会随机偏移一点。
    >
@@ -68,13 +74,13 @@ Python版本 江西省普通高等学校 校园防疫 健康签到 自动签到�
    >
    > 使用输入的经纬度，单人签到推荐，会在你输入的经纬度定位上随机偏移11.1m以内
 
-8. 如果使用输入的经纬度模式，即上一步中的参数 `signType = 1`,则还需要配置34行和36行的经纬度、38行的地址，建议在[*百度拾取坐标系统*](http://api.map.baidu.com/lbsapi/getpoint/index.html)找到自己的位置。经度是较大的那个。
+9. 如果使用输入的经纬度模式，即上一步中的参数 `signType = 1`,则还需要配置34行和36行的经纬度、38行的地址，建议在[*百度拾取坐标系统*](http://api.map.baidu.com/lbsapi/getpoint/index.html)找到自己的位置。经度是较大的那个。
    
-9. 如果需要签到通知推送，可在39-51行了解详情并配置
+10. 如果需要签到通知推送，可在39-51行了解详情并配置
 
-9. 将BigStudyConfigTemplate.cfg重命名为BigStudyConfig.cfg
+11. 将BigStudyConfigTemplate.cfg重命名为BigStudyConfig.cfg
 
-10. 部署到虚拟主机或者本机，然后cd到相关文件夹，运行命令 ` python3 sign.py`  即可
+12. 部署到虚拟主机或者本机，然后cd到相关文件夹，运行命令 ` python3 sign.py`  即可
     ```bash
     # Ubuntu 安装 python3 方法，其它如 CentOS 可以网上搜
     sudo apt install python3
@@ -83,7 +89,7 @@ Python版本 江西省普通高等学校 校园防疫 健康签到 自动签到�
     pip3 install requests
     ```
 
-11. 对于liunx系统，建议使用 `crontab` 定时运行上述命令。Windows可以使用定时任务，macOS也有定时。
+13. 对于liunx系统，建议使用 `crontab` 定时运行上述命令。Windows可以使用定时任务，macOS也有定时。
 
     > `crontab` 使用方法可以网上查找资料
 
