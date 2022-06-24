@@ -69,12 +69,15 @@ Python版本 江西省普通高等学校 校园防疫 健康签到 自动签到�
    > 使用输入的经纬度，单人签到推荐，会在你输入的经纬度定位上随机偏移11.1m以内
 
 8. 如果使用输入的经纬度模式，即上一步中的参数 `signType = 1`,则还需要配置34行和36行的经纬度、38行的地址，建议在[*百度拾取坐标系统*](http://api.map.baidu.com/lbsapi/getpoint/index.html)找到自己的位置。经度是较大的那个。
+
+9. 前往百度地图开放平台https://lbsyun.baidu.com/apiconsole/key#/home 创建一个类型为服务端的应用并将sing.py第239行中的 ‘替换为自己申请的服务端AK’ 替换为自己申请的ak：
+   url = 'http://api.map.baidu.com/reverse_geocoding/v3/?ak=替换为自己申请的服务端AK&output=json&coordtype' 
    
-9. 如果需要签到通知推送，可在39-51行了解详情并配置
+10. 如果需要签到通知推送，可在39-51行了解详情并配置
 
-9. 将BigStudyConfigTemplate.cfg重命名为BigStudyConfig.cfg
+11. 将BigStudyConfigTemplate.cfg重命名为BigStudyConfig.cfg
 
-10. 部署到虚拟主机或者本机，然后cd到相关文件夹，运行命令 ` python3 sign.py`  即可
+12. 部署到虚拟主机或者本机，然后cd到相关文件夹，运行命令 ` python3 sign.py`  即可
     ```bash
     # Ubuntu 安装 python3 方法，其它如 CentOS 可以网上搜
     sudo apt install python3
@@ -83,7 +86,7 @@ Python版本 江西省普通高等学校 校园防疫 健康签到 自动签到�
     pip3 install requests
     ```
 
-11. 对于liunx系统，建议使用 `crontab` 定时运行上述命令。Windows可以使用定时任务，macOS也有定时。
+13. 对于liunx系统，建议使用 `crontab` 定时运行上述命令。Windows可以使用定时任务，macOS也有定时。
 
     > `crontab` 使用方法可以网上查找资料
 
